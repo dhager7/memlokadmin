@@ -1,0 +1,22 @@
+extends layout
+- var button="Submit"
+
+block content
+    h1= title
+    p Welcome to license creation
+
+    #content
+        .block
+        span User email:
+        input#email
+        p
+        span license sku:
+        input#sku
+        p
+        span name:
+        input#name
+        p
+        button#getLicense button
+        p
+
+        div#response

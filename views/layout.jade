@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+   body
+    block content
+
+script(type="text/javascript").
+  var sku, email, name;
+  var getLicenseButton = document.getElementById("getLicense");
+  if (getLicenseButton) {
+    getLicenseButton.addEventListener("click", function () {
+      email = document.getElementById("email").value;
+        sku = document.getElementById("sku").value;
+        name = document.getElementById("name").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("response").innerHTML = xhttp.responseText;
+            }
+        };
+        xhttp.open("POST", '' +
+                '/createLicense/' + email + '/' + sku + '/' + name, true);
+        xhttp.send();
+    }, false);
+  }
+
